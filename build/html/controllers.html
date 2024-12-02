@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="ru" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>controllers package &#8212; документация NetworkMonitor 1.0.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=e35015f7"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/translations.js?v=5b699b7f"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="models package" href="models.html" />
+    <link rel="prev" title="NetworkMonitor documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="controllers-package">
+<h1>controllers package<a class="headerlink" href="#controllers-package" title="Ссылка на этот заголовок">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+<section id="module-controllers.capture_controller">
+<span id="controllers-capture-controller-module"></span><h2>controllers.capture_controller module<a class="headerlink" href="#module-controllers.capture_controller" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="controllers.capture_controller.CaptureController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controllers.capture_controller.</span></span><span class="sig-name descname"><span class="pre">CaptureController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interface</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#controllers.capture_controller.CaptureController" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Класс для управления захватом сетевых пакетов. Захватывает пакеты с указанного сетевого интерфейса
+в отдельном потоке и периодически отправляет их в виде сигнала.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.capture_controller.CaptureController.emit_packets">
+<span class="sig-name descname"><span class="pre">emit_packets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#controllers.capture_controller.CaptureController.emit_packets" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Извлекает захваченные пакеты из очереди и отправляет их через сигнал <cite>packets_received</cite>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="controllers.capture_controller.CaptureController.packets_received">
+<span class="sig-name descname"><span class="pre">packets_received</span></span><a class="headerlink" href="#controllers.capture_controller.CaptureController.packets_received" title="Ссылка на это определение">¶</a></dt>
+<dd><p>int = …, arguments: Sequence = …) -&gt; PYQT_SIGNAL</p>
+<p>types is normally a sequence of individual types.  Each type is either a
+type object or a string that is the name of a C++ type.  Alternatively
+each type could itself be a sequence of types each describing a different
+overloaded signal.
+name is the optional C++ name of the signal.  If it is not specified then
+the name of the class attribute that is bound to the signal is used.
+revision is the optional revision of the signal that is exported to QML.
+If it is not specified then 0 is used.
+arguments is the optional sequence of the names of the signal’s arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pyqtSignal(<a href="#id1"><span class="problematic" id="id2">*</span></a>types, name</p>
+</dd>
+<dt class="field-even">Type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str = …, revision</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.capture_controller.CaptureController.start_capture">
+<span class="sig-name descname"><span class="pre">start_capture</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#controllers.capture_controller.CaptureController.start_capture" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Запускает процесс захвата пакетов в отдельном потоке.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.capture_controller.CaptureController.stop_capture">
+<span class="sig-name descname"><span class="pre">stop_capture</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#controllers.capture_controller.CaptureController.stop_capture" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Останавливает процесс захвата пакетов и останавливает таймер.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-controllers.filter_controller">
+<span id="controllers-filter-controller-module"></span><h2>controllers.filter_controller module<a class="headerlink" href="#module-controllers.filter_controller" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="controllers.filter_controller.FilterController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controllers.filter_controller.</span></span><span class="sig-name descname"><span class="pre">FilterController</span></span><a class="headerlink" href="#controllers.filter_controller.FilterController" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс для управления фильтрами сетевых пакетов.
+Позволяет применять фильтры по протоколу, IP-адресу отправителя и IP-адресу получателя.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.filter_controller.FilterController.apply_filters">
+<span class="sig-name descname"><span class="pre">apply_filters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">packet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#controllers.filter_controller.FilterController.apply_filters" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Проверяет, проходит ли пакет через фильтры.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>packet</strong> (<a class="reference internal" href="models.html#models.packet.NetworkPacket" title="models.packet.NetworkPacket"><em>NetworkPacket</em></a>) – Захваченный пакет.</p>
+</dd>
+<dt class="field-even">Результат<span class="colon">:</span></dt>
+<dd class="field-even"><p>True, если пакет проходит фильтры.</p>
+</dd>
+<dt class="field-odd">Тип результата<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-controllers.save_controller">
+<span id="controllers-save-controller-module"></span><h2>controllers.save_controller module<a class="headerlink" href="#module-controllers.save_controller" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="controllers.save_controller.SaveController">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">controllers.save_controller.</span></span><span class="sig-name descname"><span class="pre">SaveController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#controllers.save_controller.SaveController" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">QObject</span></code></p>
+<p>Класс для сохранения данных из таблицы в файлы формата CSV или TXT.
+Обеспечивает взаимодействие с диалогом выбора файла и обработку данных таблицы.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.save_controller.SaveController.save_data">
+<span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#controllers.save_controller.SaveController.save_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Открывает диалоговое окно для выбора файла и сохраняет данные таблицы
+в выбранном формате (CSV или TXT).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.save_controller.SaveController.save_to_csv">
+<span class="sig-name descname"><span class="pre">save_to_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#controllers.save_controller.SaveController.save_to_csv" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Сохраняет данные таблицы в файл формата CSV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_name</strong> (<em>str</em>) – Полный путь к файлу для сохранения.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="controllers.save_controller.SaveController.save_to_txt">
+<span class="sig-name descname"><span class="pre">save_to_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#controllers.save_controller.SaveController.save_to_txt" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Сохраняет данные таблицы в файл формата TXT.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Параметры<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_name</strong> (<em>str</em>) – Полный путь к файлу для сохранения.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-controllers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-controllers" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">NetworkMonitor</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Навигация</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">controllers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-controllers.capture_controller">controllers.capture_controller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-controllers.filter_controller">controllers.filter_controller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-controllers.save_controller">controllers.save_controller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-controllers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">models package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">utils package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="views.html">views package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="предыдущая глава">NetworkMonitor documentation</a></li>
+      <li>Next: <a href="models.html" title="следующая глава">models package</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Yessenkhan T.B..
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/controllers.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
