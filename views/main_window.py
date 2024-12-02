@@ -94,6 +94,10 @@ class MainWindow(QtWidgets.QMainWindow):
         # Графики
         self.graphs = TrafficGraphs()
 
+        # Создаем виджет для отображения оповещений
+        self.alert_list_widget = QtWidgets.QListWidget()
+        self.alert_list_widget.setFixedHeight(100)  # Фиксированная высота для оповещений
+
         # Расположение виджетов
         self.setup_layouts()
 
@@ -130,6 +134,10 @@ class MainWindow(QtWidgets.QMainWindow):
         main_layout.addWidget(self.packet_table)
         main_layout.addWidget(self.graphs)
 
+        # Добавляем виджет оповещений в основной макет
+        main_layout.addWidget(QtWidgets.QLabel("Оповещения:"))
+        main_layout.addWidget(self.alert_list_widget)
+
         # Установка центрального виджета
         central_widget = QtWidgets.QWidget()
         central_widget.setLayout(main_layout)
@@ -143,6 +151,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.stop_button.clicked.connect(self.stop_monitoring)
         self.save_button.clicked.connect(self.save_controller.save_data)
         self.apply_filter_button.clicked.connect(self.apply_filter)
+        # Подключаем сигнал от AlertManager
+        self.alert_manager.alert_generated.connect(self.display_alert)
 
     def interface_changed(self, index: int):
         """
@@ -313,3 +323,17 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.capture_controller:
             self.capture_controller.stop_capture()
         event.accept()
+
+    def display_alert(self, message: str):
+        """
+        Отображает оповещение в списке оповещений.
+
+        Args:
+            message (str): Текст оповещения.
+        """
+        item = QtWidgets.QListWidgetItem(message)
+        # Настраиваем цветовую индикацию
+        item.setForeground(QtGui.QBrush(QtGui.QColor('red')))
+        self.alert_list_widget.addItem(item)
+        # Автоматически прокручиваем список до последнего элемента
+        self.alert_list_widget.scrollToBottom()
