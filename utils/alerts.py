@@ -60,7 +60,6 @@ class AlertManager(QObject):
         src_ip = packet.source_ip
         current_time = time.time()
 
-        # Инициализация записи для IP, если необходимо
         if src_ip not in self.ip_activity:
             self.ip_activity[src_ip] = {}
 
