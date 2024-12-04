@@ -1,6 +1,0 @@
-pyshark
-pyqt5
-matplotlib
-sphinx
-pytest
-pyinstaller
